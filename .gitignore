@@ -103,12 +103,12 @@ celerybeat.pid
 
 # Environments
 .env
-.venv
+.newenv
 env/
-venv/
+newenv/
 ENV/
 env.bak/
-venv.bak/
+newenv.bak/
 
 # Spyder project settings
 .spyderproject
@@ -134,10 +134,11 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-.venv/
+.newenv/
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/vcs.xml
 /.idea/modules.xml
 /.idea/misc.xml
 /.idea/to_do_list_project.iml
+/.idea/detecting_color.iml
 /.idea/.gitignore
