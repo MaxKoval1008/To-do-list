@@ -7,3 +7,8 @@ class PictureSerializer(serializers.ModelSerializer):
         model = Picture
         fields = ('id', 'picture_name', 'picture_img')
 
+
+class ColorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Picture
+        fields = ['picture_img']
