@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'to_do_list.apps.ToDoListConfig',
+    'detecting_color.apps.DetectingColorConfig',
     'rest_framework',
     'drf_spectacular',
     'django_filters',
