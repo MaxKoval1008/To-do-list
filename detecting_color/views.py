@@ -1,6 +1,7 @@
 from rest_framework.generics import (
     CreateAPIView, DestroyAPIView, RetrieveAPIView
 )
+from rest_framework.views import APIView
 
 from .models import Picture
 from .serializers import PictureSerializer, ColorSerializer
@@ -14,22 +15,11 @@ class PicturePostView(CreateAPIView):
     serializer_class = PictureSerializer
 
 
-class ColorRetrieveView(RetrieveAPIView):
-    queryset = Picture.objects.all()
-    serializer_class = ColorSerializer
-    parser_classes = [MultiPartParser]
-
-    def get(self, request, *args, **kwargs):
-        img = Image.open(**kwargs)
-        colors = img.getcolors(256)  # put a higher value if there are many colors in your image
-        max_occurence, most_present = 0, 0
-        try:
-            for c in colors:
-                if c[0] > max_occurence:
-                    (max_occurence, most_present) = c
-            return most_present
-        except TypeError:
-            raise Exception("Too many colors in the image")
+class ColorRetrieveView(APIView):
+    def get(self, request, pk):
+        picture_img = Picture.objects.get(id=pk)
+        serializer_class = PictureSerializer(picture_img)
+        return Response(serializer_class.data)
 
 
 class PictureDeleteView(DestroyAPIView):
